@@ -17,25 +17,27 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-# Your key here
-key = os.environ.get("ALPHAVANTAGE_KEY")
-# Chose your output format, or default to JSON (python dict)
-ts = TimeSeries(key, output_format='pandas')
-ti = TechIndicators(key)
 
-# Get the data, returns a tuple
-# aapl_data is a pandas dataframe, aapl_meta_data is a dict
-aapl_data, aapl_meta_data = ts.get_daily(symbol='AAPL')
-# aapl_sma is a dict, aapl_meta_sma also a dict
-aapl_sma, aapl_meta_sma = ti.get_sma(symbol='AAPL')
+def main(symbol: str) -> None:
+    # Your key here
+    key = os.environ.get("ALPHAVANTAGE_KEY")
+    # Chose your output format, or default to JSON (python dict)
+    ts = TimeSeries(key, output_format='pandas')
+    ti = TechIndicators(key)
 
+    # Get the data, returns a tuple
+    # aapl_data is a pandas dataframe, aapl_meta_data is a dict
+    stock_data, stock_meta_data = ts.get_daily(symbol)
+    # aapl_sma is a dict, aapl_meta_sma also a dict
+    stock_sma, stock_meta_sma = ti.get_sma(symbol)
 
-# Visualization
-figure(num=None, figsize=(15, 6), dpi=80, facecolor='w', edgecolor='k')
-aapl_data['4. close'].plot()
-plt.tight_layout()
-plt.grid()
-plt.show()
+    # Visualization
+    figure(num=None, figsize=(15, 6), dpi=80, facecolor='w', edgecolor='k')
+    stock_data['4. close'].plot()
+    plt.tight_layout()
+    plt.grid()
+    plt.show()
+
 
 if __name__ == "__main__":
     main()
