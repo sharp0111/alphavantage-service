@@ -1,1 +1,1 @@
-# AlphaVantage Microservice
+# Alpha Vantage Microservice
