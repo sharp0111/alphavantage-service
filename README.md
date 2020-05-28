@@ -1,5 +1,9 @@
 # Alpha Vantage Service for Real-Time Stock Data API
 
-# Repository hosted on GitHub and AWS CodeCommit
+# Source Control
 
-# Deployed to AWS Lambda
+Repository hosted on GitHub and AWS CodeCommit
+
+# Deployment
+
+Deployed to AWS Lambda
